@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="SchedulerDesktop.Views.ScheduleManager.ScheduleDashboard.UserControls.ScheduleDisplayControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:userControls="clr-namespace:SchedulerDesktop.Views.ScheduleManager.ScheduleDashboard.UserControls"
+             xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels.ScheduleManager"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="840"
+             d:DataContext="{d:DesignInstance Type=vm:ScheduleDisplayViewModel}">
+
+    <ItemsControl 
+        ItemsSource="{Binding DaysPartition}"
+        Height="300"
+        Width="840"
+        BorderThickness="1"
+        BorderBrush="Black"
+        VerticalAlignment="Top"
+        HorizontalAlignment="Left">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <ItemsControl ItemsSource="{Binding }">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <userControls:ShiftCube 
+                                DataContext="{Binding}"
+                                Height="100"
+                                Width="120"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Rows="1"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+</UserControl>

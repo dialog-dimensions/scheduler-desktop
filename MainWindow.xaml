@@ -4,9 +4,54 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SchedulerDesktop"
+        xmlns:converters="clr-namespace:SchedulerDesktop.Converters"
+        xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+        Loaded="MainWindow_OnLoaded" Activated="MainWindow_OnActivated">
 
+    <Window.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Menu FlowDirection="RightToLeft" Height="20" VerticalAlignment="Top">
+            <MenuItem Header="חשבון">
+                <MenuItem x:Name="LoginMenuItem" Header="התחבר" Command="{Binding OpenLoginCommand}"/>
+                <MenuItem x:Name="LogoutMenuItem" Header="התנתק" Command="{Binding LogoutCommand}"/>
+            </MenuItem>
+            <MenuItem Header="ניהול יחידה">
+                <MenuItem x:Name="UnitManagerMenuItem" Header="דאשבורד" Command="{Binding OpenEmployeeManagerCommand}"/>
+            </MenuItem>
+            <MenuItem Header="משמרות">
+                <MenuItem x:Name="ScheduleManagerMenuItem" Header="דאשבורד" Command="{Binding OpenScheduleDashboardCommand}"/>
+                <MenuItem x:Name="CreateNewScheduleMenuItem" Header="צור לוז חדש" Command="{Binding OpenNewScheduleFormCommand}" />
+                <Separator/>
+                <MenuItem x:Name="ExceptionManagerMenuItem" Header="צור אילוץ חדש" Command="{Binding OpenExceptionsManagerCommand}"/>
+            </MenuItem>
+            <MenuItem Header="סורק">
+                <MenuItem x:Name="WakeScannerMenuItem" Header="התחל" Command="{Binding WakeScannerCommand}"/>
+                <MenuItem x:Name="TerminateScannerMenuItem" Header="הפסק" Command="{Binding TerminateScannerCommand}"/>
+            </MenuItem>
+        </Menu>
+        
+        <TextBlock Grid.Row="1" FontSize="54" 
+                   Text="{Binding GreetingMessage, FallbackValue=שלום חבר}" 
+                   Margin="20,20,20,0"/>
+        
+        <TextBlock Grid.Row="2" 
+                   FontSize="20" 
+                   Text="יש להתחבר על מנת להשתמש בתוכנה" 
+                   Foreground="DarkGreen"
+                   Margin="20,0"
+                   Visibility="{Binding LoggedIn, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter='invert'}"/>
     </Grid>
 </Window>

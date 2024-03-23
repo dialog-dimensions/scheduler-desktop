@@ -1,0 +1,133 @@
+﻿<Window x:Class="SchedulerDesktop.Views.ScheduleManager.NewScheduleForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels.ScheduleManager"
+        mc:Ignorable="d"
+        Title="NewScheduleForm" Height="450" Width="400"
+        d:DataContext="{d:DesignInstance Type=vm:NewScheduleFormViewModel}">
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBlock 
+            Grid.ColumnSpan="4"
+            Text="צור לוז חדש"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FontSize="24"
+            FontWeight="SemiBold"
+            Margin="20"/>
+        
+        <TextBlock 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Text="תחילה:"
+            Margin="15"/>
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="סיום:"
+            Margin="15"/>
+        
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="2"
+            Text="שעת התחלה:"
+            Margin="15"/>
+        
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="2"
+            Text="משך לוז (בימים):"
+            Margin="15"/>
+        
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="אורך משמרת (בשעות):"
+            Margin="15"/>
+        
+        <DatePicker 
+            Grid.Row="1" 
+            Grid.Column="1" 
+            Margin="0, 15"
+            SelectedDate="{Binding StartDateTime, 
+            ValidatesOnDataErrors=True, 
+            UpdateSourceTrigger=PropertyChanged}"
+            />
+        
+        <DatePicker
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,15"
+            SelectedDate="{Binding EndDateTime, 
+            ValidatesOnDataErrors=True, 
+            UpdateSourceTrigger=PropertyChanged}"/>
+        
+        <ComboBox
+            Grid.Row="1"
+            Grid.Column="3"
+            ItemsSource="{Binding AllowedStartHourValues}"
+            SelectedItem="{Binding StartHour}"
+            Margin="0,15,15,15"/>
+        
+        <ComboBox
+            Grid.Row="2"
+            Grid.Column="3"
+            ItemsSource="{Binding AllowedScheduleDurationValues}"
+            SelectedItem="{Binding ScheduleDuration, 
+            ValidatesOnDataErrors=True, 
+            UpdateSourceTrigger=PropertyChanged}"
+            Margin="0,15,15,15"/>
+        
+        <ComboBox
+            Grid.Row="3"
+            Grid.Column="2"
+            ItemsSource="{Binding AllowedShiftDurationValues}"
+            SelectedItem="{Binding ShiftDuration}"
+            Margin="15"/>
+        
+        <!-- <TextBlock  -->
+        <!--     Grid.Row="4"  -->
+        <!--     Grid.Column="0" -->
+        <!--     Grid.ColumnSpan="4" -->
+        <!--     Text="{Binding DateValidationErrorMessage, FallbackValue=Error message will be displayed here.}" -->
+        <!--     Visibility="{Binding DateValidationErrorMessage,  -->
+        <!--     Converter={StaticResource VisibilityConverter}}" -->
+        <!--     Foreground="Red" -->
+        <!--     Margin="15"/> -->
+        
+        <Button
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Content="אישור"
+            Command="{Binding ExecuteCommand}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Height="70"
+            Width="150"
+            FontSize="40"
+            FontWeight="SemiBold"
+            Foreground="White"
+            Background="LimeGreen"
+            Margin="15,15,15,15"/>
+    </Grid>
+</Window>
