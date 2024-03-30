@@ -6,8 +6,10 @@
         xmlns:converters="clr-namespace:SchedulerDesktop.Converters"
         xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels.ExceptionsManager"
         mc:Ignorable="d"
-        Title="ExceptionsManager" Height="450" Width="400"
-        d:DataContext="{d:DesignInstance Type=vm:ExceptionsManagerViewModel}">
+        Title="הזנת התייחסות עובד למשמרת" Height="450" Width="400"
+        d:DataContext="{d:DesignInstance Type=vm:ExceptionsManagerViewModel}"
+        Icon="../../favicon.png"
+        FlowDirection="RightToLeft">
     
     <Window.Resources>
         <converters:ExceptionTypeToStringConverter x:Key="ExceptionTypeConverter"/>

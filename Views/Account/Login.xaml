@@ -5,8 +5,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:account="clr-namespace:SchedulerDesktop.ViewModels.Account"
         mc:Ignorable="d"
-        Title="Login" Height="330" Width="300"
-        d:DataContext="{d:DesignInstance Type=account:LoginViewModel}">
+        Title="התחברות" Height="330" Width="300"
+        d:DataContext="{d:DesignInstance Type=account:LoginViewModel}"
+        Icon="../../favicon.png"
+        FlowDirection="RightToLeft">
     <Grid FlowDirection="RightToLeft">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

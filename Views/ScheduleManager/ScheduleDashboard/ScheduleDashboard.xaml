@@ -7,8 +7,10 @@
         xmlns:userControls="clr-namespace:SchedulerDesktop.Views.ScheduleManager.ScheduleDashboard.UserControls"
         xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels.ScheduleManager"
         mc:Ignorable="d"
-        Title="ScheduleDashboard" Height="480" Width="900"
-        d:DataContext="{d:DesignInstance Type=vm:ScheduleDashboardViewModel}">
+        Title="דאשבורד ניהול משמרות" Height="480" Width="900"
+        d:DataContext="{d:DesignInstance Type=vm:ScheduleDashboardViewModel}"
+        Icon="../../../favicon.png"
+        FlowDirection="RightToLeft">
 
     <Window.Resources>
         <converters:TemporalStateToForegroundConverter x:Key="StateToForegroundConverter"/>

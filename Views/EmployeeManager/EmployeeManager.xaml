@@ -7,8 +7,10 @@
         xmlns:employeeManager="clr-namespace:SchedulerDesktop.Views.EmployeeManager"
         xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels.EmployeeManager"
         mc:Ignorable="d"
-        Title="EmployeeManager" Height="450" Width="600"
-        d:DataContext="{d:DesignInstance Type=vm:EmployeeManagerViewModel}">
+        Title="העובדים שלי" Height="450" Width="600"
+        d:DataContext="{d:DesignInstance Type=vm:EmployeeManagerViewModel}"
+        Icon="../../favicon.png"
+        FlowDirection="RightToLeft">
 
     
     <Window.Resources>

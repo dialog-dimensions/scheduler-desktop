@@ -7,9 +7,11 @@
         xmlns:converters="clr-namespace:SchedulerDesktop.Converters"
         xmlns:vm="clr-namespace:SchedulerDesktop.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="השבצן" Height="450" Width="800"
         d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
-        Loaded="MainWindow_OnLoaded" Activated="MainWindow_OnActivated">
+        Loaded="MainWindow_OnLoaded" Activated="MainWindow_OnActivated"
+        Icon="favicon.png"
+        FlowDirection="RightToLeft">
 
     <Window.Resources>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
