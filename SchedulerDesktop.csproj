@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
+        <ApplicationIcon>ico.ico</ApplicationIcon>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,6 +17,10 @@
       <None Remove="favicon.png" />
       <Content Include="favicon.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <None Remove="ico.ico" />
+      <Content Include="ico.ico">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
 
